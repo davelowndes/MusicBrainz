@@ -54,7 +54,7 @@ class Artist
     private $releases;
 
     /**
-     * @param array       $artist
+     * @param array $artist
      * @param MusicBrainz $brainz
      *
      * @throws Exception
@@ -65,17 +65,17 @@ class Artist
             throw new Exception('Can not create artist object. Missing valid MBID');
         }
 
-        $this->data   = $artist;
+        $this->data = $artist;
         $this->brainz = $brainz;
 
-        $this->id        = isset($artist['id']) ? (string)$artist['id'] : '';
-        $this->type      = isset($artist['type']) ? (string)$artist['type'] : '';
-        $this->name      = isset($artist['name']) ? (string)$artist['name'] : '';
-        $this->sortName  = isset($artist['sort-name']) ? (string)$artist['sort-name'] : '';
-        $this->gender    = isset($artist['gender']) ? (string)$artist['gender'] : '';
-        $this->country   = isset($artist['country']) ? (string)$artist['country'] : '';
+        $this->id = isset($artist['id']) ? (string)$artist['id'] : '';
+        $this->type = isset($artist['type']) ? (string)$artist['type'] : '';
+        $this->name = isset($artist['name']) ? (string)$artist['name'] : '';
+        $this->sortName = isset($artist['sort-name']) ? (string)$artist['sort-name'] : '';
+        $this->gender = isset($artist['gender']) ? (string)$artist['gender'] : '';
+        $this->country = isset($artist['country']) ? (string)$artist['country'] : '';
         $this->beginDate = isset($artist['life-span']['begin']) ? $artist['life-span']['begin'] : null;
-        $this->endDate   = isset($artist['life-span']['ended']) ? $artist['life-span']['ended'] : null;
+        $this->endDate = isset($artist['life-span']['ended']) ? $artist['life-span']['ended'] : null;
     }
 
     /**
@@ -121,5 +121,37 @@ class Artist
     {
         return $this->id;
     }
+
+    /**
+     * @return string
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGender()
+    {
+        return $this->gender;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBegingDate()
+    {
+        return $this->beginDate;
+    }
+    /**
+     * @return string
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
 }
 
