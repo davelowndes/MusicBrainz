@@ -141,16 +141,16 @@ class Artist
     /**
      * @return string
      */
-    public function getBegingDate()
+    public function getBeginDate()
     {
-        return $this->beginDate;
+        return (empty($this->beginDate)) ? null : new \DateTime($this->beginDate);
     }
     /**
      * @return string
      */
     public function getEndDate()
     {
-        return $this->endDate;
+        return (empty($this->endDate)) ? null : new \DateTime($this->endDate);
     }
 
 }
