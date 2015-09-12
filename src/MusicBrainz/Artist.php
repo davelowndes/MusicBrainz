@@ -143,14 +143,33 @@ class Artist
      */
     public function getBeginDate()
     {
-        return (empty($this->beginDate)) ? null : new \DateTime($this->beginDate);
+        return $this->beginDate;
     }
+
     /**
      * @return string
      */
     public function getEndDate()
     {
-        return (empty($this->endDate)) ? null : new \DateTime($this->endDate);
+        return $this->endDate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAge()
+    {
+        if (empty($this->beginDate)) return null;
+
+        try {
+            $now = new \DateTime();
+            //only return age if still active (since end date is a boolean in most cases)
+            if (empty($this->endDate) && $beginDate = \DateTime::createFromFormat('Y-m-d', $this->beginDate)) {
+                return $now->diff($beginDate)->y;
+            }
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
 }
